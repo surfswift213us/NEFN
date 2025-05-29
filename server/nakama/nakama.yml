@@ -1,0 +1,30 @@
+name: nefn-server
+
+data_dir: "/nakama/data"
+
+logger:
+  level: "info"
+  stdout: true
+
+session:
+  token_expiry_sec: 7200 # 2 hours
+  refresh_token_expiry_sec: 86400 # 24 hours
+
+socket:
+  server_key: "defaultkey"
+  port: 7350
+  max_message_size_bytes: 4096
+  read_timeout_ms: 10000
+  write_timeout_ms: 10000
+  idle_timeout_ms: 60000
+  write_wait_ms: 5000
+  pong_wait_ms: 10000
+
+runtime:
+  env:
+	- "ENET_PORT=7351"
+	- "NORAY_PORT=7352"
+  
+database:
+  address: "127.0.0.1"
+  port: 5432 

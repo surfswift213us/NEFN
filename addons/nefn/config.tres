@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="NEFNConfiguration" load_steps=2 format=3 uid="uid://dbb5n73uastq8"]
+
+[ext_resource type="Script" path="res://addons/nefn/config.gd" id="1_config"]
+
+[resource]
+script = ExtResource("1_config")
+nakama_server_key = "defaultkey"
+nakama_host = "127.0.0.1"
+nakama_port = 7350
+nakama_use_ssl = false
+enet_port = 7777
+enet_max_clients = 32
+noray_enabled = true
+noray_quality = 5
+noray_port = 7778
+debug_console_enabled = true

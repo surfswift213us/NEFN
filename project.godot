@@ -1,0 +1,51 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="NEFN"
+run/main_scene="uid://b8x8j7d4y2n8v"
+config/features=PackedStringArray("4.4")
+boot_splash/bg_color=Color(0.0142752, 0.0142752, 0.0142752, 1)
+boot_splash/image="uid://ddqyk1atl3loo"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+config/icon="res://icon.svg"
+boot_splash/minimum_display_time=2000
+
+[autoload]
+
+NEFNManager="*res://addons/nefn/autoload/nefn_manager.gd"
+NEFNDebug="*res://addons/nefn/autoload/nefn_debug.gd"
+Noray="*res://addons/netfox.noray/noray.gd"
+NetworkTime="*res://addons/netfox/network-time.gd"
+NetworkTimeSynchronizer="*res://addons/netfox/network-time-synchronizer.gd"
+NetworkRollback="*res://addons/netfox/rollback/network-rollback.gd"
+NetworkEvents="*res://addons/netfox/network-events.gd"
+NetworkPerformance="*res://addons/netfox/network-performance.gd"
+NetworkNakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
+PacketHandshake="*res://addons/netfox.noray/packet-handshake.gd"
+WindowTiler="*res://addons/netfox.extras/window-tiler.gd"
+
+[dotnet]
+
+project/assembly_name="New Game Project"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/nefn/plugin.cfg", "res://addons/netfox.extras/plugin.cfg", "res://addons/netfox.internals/plugin.cfg", "res://addons/netfox.noray/plugin.cfg", "res://addons/netfox/plugin.cfg")
+
+[input]
+
+toggle_console={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":96,"physical_keycode":96,"key_label":96,"unicode":96,"location":0,"echo":false,"script":null)
+]
+}

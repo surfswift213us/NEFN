@@ -1,0 +1,64 @@
+version: '3'
+
+services:
+  nakama:
+	image: heroiclabs/nakama:3.17.0
+	ports:
+	  - "7349:7349" # Nakama gRPC
+	  - "7350:7350" # Nakama API
+	volumes:
+	  - ./data:/nakama/data
+	  - ./modules:/nakama/modules
+	  - ./config/nakama.yml:/etc/nakama/config.yml
+	environment:
+	  - NAKAMA_PORT=7350
+	depends_on:
+	  - postgres
+	restart: unless-stopped
+	networks:
+	  - nefn-network
+
+  enet-server:
+	build:
+	  context: ./server/enet
+	  dockerfile: Dockerfile
+	ports:
+	  - "7351:7351"
+	environment:
+	  - ENET_PORT=7351
+	restart: unless-stopped
+	networks:
+	  - nefn-network
+
+  noray-server:
+	build:
+	  context: ./server/noray
+	  dockerfile: Dockerfile
+	ports:
+	  - "7352:7352"
+	environment:
+	  - NORAY_PORT=7352
+	  - NORAY_QUALITY=5
+	restart: unless-stopped
+	networks:
+	  - nefn-network
+
+  postgres:
+	image: postgres:15
+	ports:
+	  - "5432:5432"
+	environment:
+	  - POSTGRES_DB=nakama
+	  - POSTGRES_PASSWORD=nefn_password
+	volumes:
+	  - postgres_data:/var/lib/postgresql/data
+	restart: unless-stopped
+	networks:
+	  - nefn-network
+
+volumes:
+  postgres_data:
+
+networks:
+  nefn-network:
+	driver: bridge 
